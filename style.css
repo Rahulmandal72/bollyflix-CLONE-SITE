@@ -1,0 +1,128 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: #111;
+  color: #fff;
+}
+
+/* Header */
+header {
+  background: #000;
+  border-bottom: 2px solid #222;
+}
+
+/* Top container */
+#container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+}
+
+/* Logo */
+#site_logo img {
+  height: 50px;
+}
+
+/* Search bar */
+.search_bar {
+  display: flex;
+  align-items: center;
+  background: #222;
+  border-radius: 30px;
+  padding: 5px 15px;
+}
+
+.search_bar input {
+  border: none;
+  outline: none;
+  background: transparent;
+  color: white;
+  padding: 8px;
+  width: 250px;
+}
+
+.search_bar span {
+  cursor: pointer;
+  color: #aaa;
+}
+
+/* Navbar */
+.navbar {
+  background: #111;
+}
+
+.menu {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+}
+
+.menu li {
+  position: relative;
+}
+
+.menu > li {
+  padding: 15px 20px;
+}
+
+.menu a {
+  text-decoration: none;
+  color: white;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.menu a:hover {
+  color: #e50914;
+}
+
+/* Dropdown */
+.submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #222;
+  display: none;
+  min-width: 200px;
+  list-style: none;
+  z-index: 999;
+}
+
+.submenu li {
+  padding: 10px;
+}
+
+.submenu li a {
+  color: #ddd;
+  font-size: 13px;
+}
+
+.submenu li:hover {
+  background: #333;
+}
+
+/* Show dropdown on hover */
+.dropdown:hover > .submenu {
+  display: block;
+}
+
+/* Nested dropdown */
+.submenu .submenu {
+  left: 100%;
+  top: 0;
+}
+
+/* Footer (basic) */
+footer {
+  padding: 20px;
+  text-align: center;
+  background: #000;
+  border-top: 1px solid #222;
+}
