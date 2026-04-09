@@ -396,7 +396,7 @@ main {
 .navigation.pagination {
   display: flex;
   justify-content: flex-start;  /* Left se shuru - scroll hone dega */
-  flex-wrap: nowrap;            /* Wrap mat karo - scroll hoga */
+  flex-wrap: wrap;            /* Wrap mat karo - scroll hoga */
   gap: 6px;
   margin-top: 10px;
   margin-bottom: 20px;
