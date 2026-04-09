@@ -1,288 +1,278 @@
 /* =============================================
-   BollyFlix - Dark Cinematic Theme
-   =============================================
-   Color Palette:
-   --bg-deep: #0a0a0f        (almost black background)
-   --bg-card: #12121a        (card background)
-   --bg-nav: #0d0d14         (navbar bg)
-   --accent: #e50914         (Netflix-inspired red)
-   --accent-gold: #f5c518    (IMDb-style gold)
-   --text-primary: #ffffff
-   --text-muted: #a0a0b0
-   --border: #1e1e2e
+   BollyFlix - Simple Dark CSS
+   Beginner Friendly - No Variables Used
+   
+   COLORS USED:
+   #0a0a0f  = Page background (dark black)
+   #0d0d14  = Header / Footer background
+   #12121a  = Card background
+   #1e1e2e  = Border color
+   #a0a0b0  = Gray text
+   #ffffff  = White text
+   #e50914  = Red color (buttons, hover)
+   #f5c518  = Gold color (domain link)
 ============================================= */
 
-/* ---- Google Font Import ---- */
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap');
 
-/* ---- CSS Variables ---- */
-:root {
-  --bg-deep: #0a0a0f;
-  --bg-card: #12121a;
-  --bg-nav: #0d0d14;
-  --bg-submenu: #161622;
-  --accent: #e50914;
-  --accent-hover: #ff1a26;
-  --accent-gold: #f5c518;
-  --text-primary: #ffffff;
-  --text-muted: #a0a0b0;
-  --border: #1e1e2e;
-  --border-hover: #2e2e4e;
-  --shadow: 0 4px 24px rgba(0,0,0,0.7);
-  --radius: 6px;
-  --transition: 0.22s ease;
-  --font-title: 'Bebas Neue', cursive;
-  --font-body: 'Outfit', sans-serif;
-}
+/* Google Font Import */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap');
 
-/* ---- Reset ---- */
-*, *::before, *::after {
+
+/* =============================================
+   RESET
+   Yeh sab browsers mein same dikhne ke liye hota hai.
+   Har browser ka apna default margin/padding hota hai,
+   yeh rule se sab zero ho jata hai.
+============================================= */
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
-}
 
+/* =============================================
+   BODY
+   Poori page ka background aur font set karo.
+============================================= */
 body {
-  background-color: var(--bg-deep);
-  color: var(--text-primary);
-  font-family: var(--font-body);
+  background-color: #0a0a0f;
+  color: #ffffff;
+  font-family: 'Outfit', sans-serif;
   font-size: 15px;
-  line-height: 1.6;
-  min-height: 100vh;
-
-  /* Subtle noise texture for depth */
-  background-image:
-    radial-gradient(ellipse at 20% 0%, rgba(229,9,20,0.06) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 100%, rgba(229,9,20,0.04) 0%, transparent 50%);
 }
 
+
+/* =============================================
+   LINKS - <a> tag
+============================================= */
 a {
-  text-decoration: none;
-  color: inherit;
-  transition: color var(--transition);
+  text-decoration: none; /* Underline hatao */
+  color: inherit;        /* Parent ka color le lo */
 }
 
+
+/* =============================================
+   LIST - <ul> <li> tag
+============================================= */
 ul {
-  list-style: none;
+  list-style: none; /* Bullet points hatao */
 }
 
+
+/* =============================================
+   IMAGE - <img> tag
+============================================= */
 img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  display: block;      /* Image ke neeche extra space na aaye */
+  width: 100%;         /* Container ke hisab se width le lo */
+  object-fit: cover;   /* Image crop ho, stretch na ho */
 }
 
+
+/* =============================================
+   BUTTON - <button> tag
+============================================= */
 button {
-  cursor: pointer;
-  border: none;
-  background: none;
-  font-family: var(--font-body);
+  cursor: pointer;              /* Mouse pe hand icon aaye */
+  border: none;                 /* Default border hatao */
+  background: none;             /* Default background hatao */
+  font-family: 'Outfit', sans-serif;
 }
 
-/* ============================================
+
+/* =============================================
    HEADER
+   Sticky matlab scroll karne pe bhi upar chipka rahega.
 ============================================= */
 header {
-  background: var(--bg-nav);
-  border-bottom: 1px solid var(--border);
+  background-color: #0d0d14;
+  border-bottom: 1px solid #1e1e2e;
   position: sticky;
   top: 0;
-  z-index: 1000;
-  box-shadow: 0 2px 20px rgba(0,0,0,0.8);
+  z-index: 1000; /* Sabse upar dikhega - baaki sab elements ke upar */
 }
 
-/* Top bar: logo + search */
+
+/* =============================================
+   LOGO + SEARCH ROW  (#container)
+   Flexbox use kiya hai - logo left, search right.
+============================================= */
 #container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: flex;               /* Items ek line mein */
+  align-items: center;         /* Vertically center */
+  justify-content: space-between; /* Logo left, search right */
   gap: 16px;
-  max-width: 1400px;
-  margin: 0 auto;
+  max-width: 1400px;           /* Zyada wide na ho badi screen pe */
+  margin: 0 auto;              /* Center mein rakhna */
   padding: 10px 24px;
 }
 
-/* Logo */
-#site_logo a {
-  display: flex;
-  align-items: center;
-}
 
+/* =============================================
+   LOGO IMAGE
+============================================= */
 #site_logo img {
   height: 44px;
-  width: auto;
-  object-fit: contain;
-  filter: drop-shadow(0 0 8px rgba(229,9,20,0.5));
-  transition: filter var(--transition);
+  width: auto; /* Height fix karo, width automatic */
 }
 
-#site_logo img:hover {
-  filter: drop-shadow(0 0 14px rgba(229,9,20,0.9));
-}
 
-/* Search bar */
+/* =============================================
+   SEARCH BAR
+============================================= */
 .search_bar {
   display: flex;
   align-items: center;
-  background: #1a1a28;
-  border: 1px solid var(--border);
-  border-radius: 25px;
-  padding: 6px 16px;
   gap: 8px;
-  flex: 1;
+  background-color: #1a1a28;
+  border: 1px solid #1e1e2e;
+  border-radius: 25px;   /* Pill shape - fully rounded */
+  padding: 7px 16px;
+  flex: 1;               /* Available jagah le lo */
   max-width: 480px;
-  transition: border-color var(--transition), box-shadow var(--transition);
 }
 
+/* Jab input mein type karo tab border red ho jaye */
 .search_bar:focus-within {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(229,9,20,0.15);
+  border-color: #e50914;
 }
 
+/* Search input field */
 .search_bar input {
   background: none;
   border: none;
-  outline: none;
-  color: var(--text-primary);
-  font-family: var(--font-body);
+  outline: none;  /* Click karne pe blue border na aaye */
+  color: #ffffff;
   font-size: 14px;
   width: 100%;
+  font-family: 'Outfit', sans-serif;
 }
 
+/* Placeholder text color */
 .search_bar input::placeholder {
-  color: var(--text-muted);
+  color: #a0a0b0;
 }
 
+/* Search icon */
 .search_bar .material-symbols-outlined {
-  color: var(--text-muted);
+  color: #a0a0b0;
   font-size: 20px;
-  transition: color var(--transition);
 }
 
-.search_bar:focus-within .material-symbols-outlined {
-  color: var(--accent);
-}
 
-/* ============================================
+/* =============================================
    NAVBAR
+   Menu links wali bar.
 ============================================= */
 .navbar {
-  background: rgba(13,13,20,0.95);
-  border-top: 1px solid var(--border);
+  background-color: #0d0d14;
+  border-top: 1px solid #1e1e2e;
 }
 
+/* Menu ul - horizontal list */
 .menu {
   display: flex;
+  flex-wrap: wrap;    /* Wrap ho jaye agar items zyada ho */
   align-items: center;
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 24px;
-  flex-wrap: wrap;
-  position: relative;
 }
 
+/* Menu ke top level links - HOME, MOVIES etc */
 .menu > li > a {
   display: block;
-  padding: 12px 14px;
+  padding: 12px 13px;
   font-size: 12px;
   font-weight: 600;
+  color: #a0a0b0;
+  text-transform: uppercase;  /* Chote letters ko capital karo */
   letter-spacing: 0.5px;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  white-space: nowrap;
-  transition: color var(--transition), background var(--transition);
-  border-bottom: 2px solid transparent;
+  border-bottom: 2px solid transparent; /* Hidden underline */
 }
 
-.menu > li > a:hover,
-.menu > li.dropdown:hover > a {
-  color: var(--text-primary);
-  border-bottom-color: var(--accent);
+/* Hover pe white color aur red underline */
+.menu > li > a:hover {
+  color: #ffffff;
+  border-bottom-color: #e50914;
 }
 
-/* ---- Dropdown ---- */
+
+/* =============================================
+   DROPDOWN MENU
+   Hover karne pe neeche list aati hai.
+============================================= */
+
+/* Dropdown wale li ko position relative do */
 .dropdown {
   position: relative;
 }
 
+/* Submenu by default chhupa hua hai */
 .submenu {
   display: none;
-  position: absolute;
-  top: 100%;
+  position: absolute;  /* Normal flow se bahar - dropdown jaisa */
+  top: 100%;           /* Parent ke bilkul neeche */
   left: 0;
-  background: var(--bg-submenu);
-  border: 1px solid var(--border);
-  border-top: 2px solid var(--accent);
-  border-radius: 0 0 var(--radius) var(--radius);
+  background-color: #161622;
+  border: 1px solid #1e1e2e;
+  border-top: 2px solid #e50914;
   min-width: 200px;
-  box-shadow: var(--shadow);
   z-index: 999;
-  animation: fadeDown 0.2s ease;
 }
 
-@keyframes fadeDown {
-  from { opacity: 0; transform: translateY(-6px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
+/* Jab hover karo tab submenu dikhe */
 .dropdown:hover > .submenu {
   display: block;
 }
 
-.submenu li {
-  position: relative;
-}
-
+/* Submenu ke andar links */
 .submenu li a {
   display: block;
   padding: 9px 16px;
   font-size: 13px;
-  color: var(--text-muted);
+  color: #a0a0b0;
   border-left: 2px solid transparent;
-  transition: all var(--transition);
 }
 
+/* Submenu link hover */
 .submenu li a:hover {
-  color: var(--text-primary);
-  background: rgba(229,9,20,0.08);
-  border-left-color: var(--accent);
-  padding-left: 20px;
+  color: #ffffff;
+  background-color: #1e0a0a;
+  border-left-color: #e50914;
 }
 
-/* Nested submenu (2016-2020) */
+/* Nested submenu - YEAR > 2016-2020 ke andar wala */
 .submenu .submenu {
   top: 0;
-  left: 100%;
-  border-top: 2px solid var(--accent);
-  border-radius: var(--radius);
+  left: 100%;  /* Right side pe open ho */
 }
 
-/* Mobile hamburger button */
+
+/* =============================================
+   HAMBURGER BUTTON (Mobile)
+   Desktop pe hide, mobile pe show hoga.
+============================================= */
 #mobile-control {
-  display: none;
+  display: none;  /* Desktop pe hide */
   flex-direction: column;
   gap: 5px;
   padding: 8px;
-  margin-left: auto;
-  margin-right: 24px;
 }
 
+/* Teen lines (hamburger icon) */
 #mobile-control span {
   display: block;
   width: 24px;
   height: 2px;
-  background: var(--text-primary);
+  background-color: #ffffff;
   border-radius: 2px;
-  transition: all 0.3s ease;
 }
 
-/* ============================================
-   MAIN CONTENT
+
+/* =============================================
+   MAIN CONTENT AREA
 ============================================= */
 main {
   max-width: 1400px;
@@ -290,7 +280,11 @@ main {
   padding: 20px 24px 40px;
 }
 
-/* ---- Extra Buttons (Quick Links) ---- */
+
+/* =============================================
+   QUICK LINK BUTTONS
+   Telegram, Bollywood, Hollywood wale buttons
+============================================= */
 .extra_button {
   display: flex;
   flex-wrap: wrap;
@@ -299,199 +293,157 @@ main {
 }
 
 .extra_button button {
-  background: #1a1a28;
-  border: 1px solid var(--border);
+  background-color: #1a1a28;
+  border: 1px solid #1e1e2e;
   border-radius: 20px;
   padding: 6px 14px;
   font-size: 12px;
-  font-weight: 500;
-  color: var(--text-muted);
-  transition: all var(--transition);
-}
-
-.extra_button button a {
-  color: inherit;
+  color: #a0a0b0;
 }
 
 .extra_button button:hover {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: #fff;
-  transform: translateY(-1px);
+  background-color: #e50914;
+  border-color: #e50914;
+  color: #ffffff;
 }
 
-/* ---- Domain Banner ---- */
+
+/* =============================================
+   DOMAIN BANNER
+   "Our New Domain is BollyFlix.To" wali strip
+============================================= */
 #flag_domain {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: linear-gradient(135deg, #1a0a0a, #2a0808);
-  border: 1px solid rgba(229,9,20,0.4);
-  border-left: 4px solid var(--accent);
-  border-radius: var(--radius);
+  gap: 12px;
+  background-color: #1a0808;
+  border: 1px solid #3a1010;
+  border-left: 4px solid #e50914;  /* Left mein moti red line */
+  border-radius: 6px;
   padding: 10px 16px;
   margin-bottom: 24px;
-  gap: 12px;
 }
 
 #flag_domain h1 {
-  font-family: var(--font-body);
   font-size: 13px;
   font-weight: 500;
-  color: var(--text-muted);
-  line-height: 1.4;
+  color: #a0a0b0;
 }
 
-#flag_domain h1 #BollyFlix\.To {
-  color: var(--accent-gold);
+/* Domain link - gold color */
+#BollyFlix\.To {
+  color: #f5c518;
   font-weight: 700;
 }
 
-#flag_domain h1 #BollyFlix\.To:hover {
-  text-decoration: underline;
-}
-
+/* X (close) button */
 #flag_domain .cancel {
-  background: rgba(255,255,255,0.08);
-  color: var(--text-muted);
-  border: 1px solid var(--border);
-  border-radius: 50%;
+  background-color: #2a2a2a;
+  color: #a0a0b0;
+  border: 1px solid #1e1e2e;
+  border-radius: 50%;   /* Circle shape */
   width: 24px;
   height: 24px;
   font-size: 11px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  transition: all var(--transition);
 }
 
 #flag_domain .cancel:hover {
-  background: var(--accent);
-  color: #fff;
-  border-color: var(--accent);
+  background-color: #e50914;
+  color: #ffffff;
 }
 
-/* ============================================
-   CONTENT GRID
+
+/* =============================================
+   MOVIE CARDS GRID
+   CSS Grid use kiya - automatically columns banta hai.
 ============================================= */
 .content {
   display: grid;
+  /* auto-fill = jitni jagah ho utne columns bana lo */
+  /* minmax(200px, 1fr) = minimum 200px, maximum equal width */
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 18px;
+  gap: 16px;
   margin-bottom: 32px;
 }
 
-/* Each card */
+/* Ek movie card */
 .content > a {
   display: block;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  overflow: hidden;
-  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
-  position: relative;
-  group: true;
+  background-color: #12121a;
+  border: 1px solid #1e1e2e;
+  border-radius: 6px;
+  overflow: hidden;   /* Image card ke andar hi rahe */
 }
 
+/* Card hover effect */
 .content > a:hover {
-  transform: translateY(-4px) scale(1.01);
-  box-shadow: 0 12px 32px rgba(229,9,20,0.2);
-  border-color: var(--accent);
+  border-color: #e50914;
+  transform: translateY(-3px);  /* 3px upar uthega */
 }
 
-/* Card image wrapper */
+/* Movie poster image */
 .content > a img {
-  aspect-ratio: 2/3;
+  aspect-ratio: 2 / 3;  /* Width:Height = 2:3 - poster ratio */
   object-fit: cover;
-  transition: transform 0.4s ease;
 }
 
-.content > a:hover img {
-  transform: scale(1.05);
-}
-
-/* Red overlay on hover */
-.content > a::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(229,9,20,0.15) 0%, transparent 60%);
-  opacity: 0;
-  transition: opacity var(--transition);
-  pointer-events: none;
-}
-
-.content > a:hover::after {
-  opacity: 1;
-}
-
-/* Card title */
+/* Movie title */
 .content > a h2 {
-  font-family: var(--font-body);
   font-size: 12px;
   font-weight: 500;
-  color: var(--text-muted);
-  padding: 10px 10px 12px;
+  color: #a0a0b0;
+  padding: 10px;
   line-height: 1.5;
+
+  /* 3 lines se zyada text chhupa do (...) */
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  transition: color var(--transition);
 }
 
+/* Title hover pe white */
 .content > a:hover h2 {
-  color: var(--text-primary);
+  color: #ffffff;
 }
 
-/* ============================================
+
+/* =============================================
    PAGINATION
+   1, 2, 3 ... Next wale buttons
 ============================================= */
 .navigation.pagination {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 6px;
-  margin-top: 8px;
 }
 
 .navigation.pagination button {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
+  background-color: #12121a;
+  border: 1px solid #1e1e2e;
+  border-radius: 6px;
   min-width: 38px;
   height: 38px;
   padding: 0 10px;
   font-size: 13px;
-  font-weight: 500;
-  color: var(--text-muted);
-  transition: all var(--transition);
-}
-
-.navigation.pagination button a {
-  color: inherit;
+  color: #a0a0b0;
 }
 
 .navigation.pagination button:hover {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: #fff;
+  background-color: #e50914;
+  border-color: #e50914;
+  color: #ffffff;
 }
 
-.navigation.pagination button:first-child,
-.navigation.pagination button:last-child {
-  padding: 0 16px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-}
 
-/* ============================================
+/* =============================================
    FOOTER
 ============================================= */
 footer {
-  background: var(--bg-nav);
-  border-top: 1px solid var(--border);
+  background-color: #0d0d14;
+  border-top: 1px solid #1e1e2e;
   padding: 20px 24px;
   display: flex;
   align-items: center;
@@ -499,82 +451,72 @@ footer {
   flex-wrap: wrap;
   gap: 14px;
   font-size: 13px;
-  color: var(--text-muted);
-  position: relative;
-}
-
-footer p {
-  font-weight: 500;
-}
-
-footer a {
-  color: var(--text-muted);
-  transition: color var(--transition);
+  color: #a0a0b0;
 }
 
 footer a:hover {
-  color: var(--accent);
+  color: #e50914;
 }
 
-/* Scroll to top */
+
+/* =============================================
+   SCROLL TO TOP BUTTON
+   Fixed matlab page scroll karne pe bhi same jagah rahega.
+============================================= */
 .scroll-to-up {
-  background: var(--accent);
-  color: #fff;
+  background-color: #e50914;
+  color: #ffffff;
   border-radius: 50%;
   width: 36px;
   height: 36px;
   font-size: 18px;
   font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: fixed;
+  position: fixed;   /* Screen ke corner mein chipka hua */
   bottom: 28px;
   right: 28px;
-  box-shadow: 0 4px 16px rgba(229,9,20,0.5);
-  transition: transform var(--transition), box-shadow var(--transition);
   z-index: 999;
 }
 
 .scroll-to-up:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(229,9,20,0.7);
 }
 
-/* ============================================
-   RESPONSIVE
+
+/* =============================================
+   RESPONSIVE CSS
+   @media = screen size ke hisab se style change karo
 ============================================= */
 
-/* Tablet */
+/* ---- TABLET (992px se chhoti screen) ---- */
 @media (max-width: 992px) {
+
   .content {
     grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 14px;
-  }
-
-  .menu > li > a {
-    padding: 12px 10px;
-    font-size: 11px;
   }
 }
 
-/* Mobile */
+
+/* ---- MOBILE (768px se chhoti screen) ---- */
 @media (max-width: 768px) {
+
+  /* Search bar neeche chali jaye */
   #container {
-    padding: 10px 16px;
     flex-wrap: wrap;
+    padding: 10px 16px;
   }
 
   .search_bar {
+    order: 3;        /* Teesre number pe render ho (logo=1, hamburger=2) */
     max-width: 100%;
-    order: 3;
-    flex: 1 1 100%;
+    flex: 1 1 100%;  /* Poori width le lo */
   }
 
+  /* Hamburger button dikhao */
   #mobile-control {
     display: flex;
   }
 
+  /* Menu chhupa do - JavaScript se .active class add hogi tab dikhega */
   .menu {
     display: none;
     flex-direction: column;
@@ -582,6 +524,7 @@ footer a:hover {
     padding: 8px 0;
   }
 
+  /* JS mein: document.querySelector('.menu').classList.toggle('active') */
   .menu.active {
     display: flex;
   }
@@ -592,43 +535,30 @@ footer a:hover {
 
   .menu > li > a {
     padding: 12px 20px;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid #1e1e2e;
     font-size: 13px;
-    border-bottom-color: var(--border);
-    border-left: none;
   }
 
+  /* Mobile mein submenu - dropdown nahi, seedha neeche */
   .submenu {
-    position: static;
-    box-shadow: none;
+    position: static;   /* Normal flow mein wapas */
     border: none;
-    border-top: none;
-    border-left: 3px solid var(--accent);
-    border-radius: 0;
-    background: rgba(229,9,20,0.05);
+    border-left: 3px solid #e50914;
+    background-color: #150505;
     display: none;
-    animation: none;
+    min-width: unset;
   }
 
+  /* JS mein: dropdown.classList.toggle('open') */
   .dropdown.open > .submenu {
     display: block;
   }
 
-  /* On mobile, nested submenu stays inside */
+  /* Nested submenu thoda andar */
   .submenu .submenu {
     position: static;
-    left: 0;
-    border-left: 3px solid var(--accent-gold);
+    border-left-color: #f5c518;
     margin-left: 12px;
-  }
-
-  .extra_button {
-    gap: 6px;
-  }
-
-  .extra_button button {
-    font-size: 11px;
-    padding: 5px 10px;
   }
 
   main {
@@ -639,21 +569,19 @@ footer a:hover {
     grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
     gap: 10px;
   }
-
-  #flag_domain h1 {
-    font-size: 11px;
-  }
 }
 
+
+/* ---- SMALL MOBILE (480px se chhoti screen) ---- */
 @media (max-width: 480px) {
+
+  /* Sirf 2 columns rakhna */
   .content {
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
   }
 
   footer {
     flex-direction: column;
-    gap: 8px;
     text-align: center;
   }
 }
